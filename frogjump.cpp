@@ -57,3 +57,33 @@ int frogJump(int n, vector<int> &heights)
 
     
 }
+//space optimize code
+//always  there is chance to this kindda space optimization when ther is n-1 and n-2 in 1d array;
+
+int frogJump(int n, vector<int> &heights)
+{
+        int prev=0;
+        int prev2=0;
+
+ for(int i=1; i<n; i++){
+    int step1= prev+abs(heights[i]-heights[i-1]);
+    int step2=INT_MAX;
+    if(i>1){
+      step2=prev2+abs(heights[i]-heights[i-2]);
+    }
+
+
+    int  curr=min(step1,step2);
+    prev2=prev;
+    prev=curr;
+
+    }
+
+    return  prev;
+
+
+    
+
+    
+}
+
